@@ -67,4 +67,129 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 9
+# Topic: Console-Based Simple Calculator
+# =============================================================================
+
+def add(a, b):
+    """Returns the sum of two numbers."""
+    return a + b
+
+
+def subtract(a, b):
+    """Returns the difference of two numbers."""
+    return a - b
+
+
+def multiply(a, b):
+    """Returns the product of two numbers."""
+    return a * b
+
+
+def divide(a, b):
+    """
+    Returns the division of two numbers rounded to 2 decimal places.
+    Raises ZeroDivisionError if b is zero.
+    """
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    """
+    Returns the modulus (remainder) of two numbers.
+    Raises ZeroDivisionError if b is zero.
+    """
+    if b == 0:
+        raise ZeroDivisionError("Cannot perform modulus with zero.")
+    return a % b
+
+
+def exponentiate(a, b):
+    """Returns a raised to the power of b."""
+    return a ** b
+
+
+def display_menu():
+    """Prints the main interactive menu."""
+    print("\n============================")
+    print("     SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def get_numbers():
+    """Helper function to prompt and validate numeric input from the user."""
+    while True:
+        try:
+            num1 = float(input("Enter first number : "))
+            num2 = float(input("Enter second number: "))
+            return num1, num2
+        except ValueError:
+            print("Error: Invalid input. Please enter valid numbers.")
+
+
+def format_num(val):
+    """Formats a float as an integer if it has no decimal part."""
+    if isinstance(val, float) and val.is_integer():
+        return int(val)
+    return val
+
+
+def main():
+    """Main function controlling the interactive loop."""
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ").strip()
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice in ["1", "2", "3", "4", "5", "6"]:
+            num1, num2 = get_numbers()
+
+            # Display numbers as integers if they are whole values (e.g., 10 instead of 10.0)
+            n1_disp = format_num(num1)
+            n2_disp = format_num(num2)
+
+            try:
+                if choice == "1":
+                    res = add(num1, num2)
+                    print(f"Result: {n1_disp} + {n2_disp} = {format_num(res)}")
+                elif choice == "2":
+                    res = subtract(num1, num2)
+                    print(f"Result: {n1_disp} - {n2_disp} = {format_num(res)}")
+                elif choice == "3":
+                    res = multiply(num1, num2)
+                    print(f"Result: {n1_disp} * {n2_disp} = {format_num(res)}")
+                elif choice == "4":
+                    res = divide(num1, num2)
+                    print(f"Result: {n1_disp} / {n2_disp} = {res}")
+                elif choice == "5":
+                    res = modulus(num1, num2)
+                    print(f"Result: {n1_disp} % {n2_disp} = {format_num(res)}")
+                elif choice == "6":
+                    res = exponentiate(num1, num2)
+                    print(f"Result: {n1_disp} ** {n2_disp} = {format_num(res)}")
+
+            except ZeroDivisionError as e:
+                print(f"Error: {e}")
+        else:
+            print("Invalid choice. Please select an operation between 1 and 7.")
+
+
+# =============================================================================
+# MAIN EXECUTION
+# =============================================================================
+if __name__ == "__main__":
+    main()
+# =============================================================================
 
