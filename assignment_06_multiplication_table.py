@@ -54,4 +54,61 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+# PROGRAMMING FUNDAMENTALS — Assignment 6
+# Topic: Loops and Functions
+# =============================================================================
+
+def print_single_table(number):
+    """
+    Prints the multiplication table for a given number from 1 to 12.
+    """
+    print(f"\nMultiplication Table for {number}:")
+    for i in range(1, 13):
+        print(f"{number:<2} x {i:>2} = {number * i:>3}")
+
+
+def part_a():
+    """
+    Part A: Prompts user for a single number and prints its multiplication table.
+    """
+    print("--- PART A ---")
+    try:
+        user_input = int(input("Enter a number: "))
+        if user_input <= 0:
+            print("Error: Please enter a positive integer.")
+            return
+        print_single_table(user_input)
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+
+def part_b():
+    """
+    Part B: Prompts user for a number N and prints tables from 1 to N.
+    """
+    print("\n--- PART B ---")
+    try:
+        n = int(input("Enter a number N: "))
+        if n <= 0:
+            print("Error: Please enter a positive integer.")
+            return
+        
+        for num in range(1, n + 1):
+            print_single_table(num)
+            if num < n:
+                print("---------------------------")
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid integer.")
+
+
+# =============================================================================
+# MAIN EXECUTION
+# =============================================================================
+if __name__ == "__main__":
+    # Execute Part A
+    part_a()
+    
+    # Execute Part B
+    part_b()
+# =============================================================================
 
